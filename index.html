@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Leaflet Map</title>
+    <meta charset="utf-8" />
+    <link 
+        rel="stylesheet" 
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+</head>
+<body>
+    <div id="map" style="width: 700px; height: 500px"></div>
+
+    <script
+        src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+    </script>
+    <script
+        src="https://code.jquery.com/jquery-2.1.4.js">
+    </script>
+
+    <script>
+        var map = L.map('map').setView([40.007, -105.266], 16);
+        mapLink = 
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+            }).addTo(map);
+
+
+
+        var mapillary = new L.geoJson();
+        mapillary.addTo(map);
+
+        $.ajax({
+        dataType: "json",
+        url: "http://api.mapillary.com/v1/im/search?min-lat=40.002&max-lat=40.01&min-lon=-106.256&max-lon=-105.263&max-results=100&geojson=true",
+        success: function(data) {
+            $(data.features).each(function(key, data) {
+                mapillary.addData(data);
+                onEachFeature(data,mapillary);
+            });
+        }
+        }).error(function() {});
+
+        function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.image) {
+                var popUpContent= "<img src='" + feature.properties.image + "'/>";
+                layer.bindPopup(popUpContent);
+            }
+        }
+
+    </script>
+</body>
+</html>
