@@ -5,19 +5,12 @@
     <meta charset="utf-8" />
     <link 
         rel="stylesheet" 
-        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
-    />
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"    />
 </head>
 <body>
     <div id="map" style="width: 700px; height: 500px"></div>
-
-    <script
-        src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
-    </script>
-    <script
-        src="https://code.jquery.com/jquery-2.1.4.js">
-    </script>
-
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">    </script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js">    </script>
     <script>
         var map = L.map('map').setView([40.007, -105.266], 16);
         mapLink = 
@@ -27,7 +20,6 @@
             attribution: '&copy; ' + mapLink + ' Contributors',
             maxZoom: 18,
             }).addTo(map);
-
 
 
         var mapillary = new L.geoJson();
