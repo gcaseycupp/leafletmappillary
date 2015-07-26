@@ -12,7 +12,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">    </script>
     <script src="https://code.jquery.com/jquery-2.1.4.js">    </script>
     <script>
-        var map = L.map('map').setView([40.007, -105.266], 16);
+        var map = L.map('map').setView([40.007, -105.266], 15);
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
@@ -27,7 +27,7 @@
 
         $.ajax({
         dataType: "json",
-        url: "http://api.mapillary.com/v1/im/search?min-lat=40.002&max-lat=40.01&min-lon=-106.256&max-lon=-105.263&max-results=100&geojson=true",
+        url: "http://api.mapillary.com/v1/im/search?min-lat=40.002&max-lat=40.01&min-lon=-105.262&max-lon=-105.273&max-results=100&geojson=true",
         success: function(data) {
             $(data.features).each(function(key, data) {
                 mapillary.addData(data);
