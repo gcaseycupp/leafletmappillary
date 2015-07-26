@@ -27,7 +27,7 @@
 
         $.ajax({
         dataType: "json",
-        url: "http://api.mapillary.com/v1/im/search?min-lat=40.002&max-lat=40.01&min-lon=-105.262&max-lon=-105.273&max-results=100&geojson=true",
+        url: "http://api.mapillary.com/v1/im/search?min-lat=40.005&max-lat=40.01&min-lon=-105.262&max-lon=-105.272&max-results=100&geojson=true",
         success: function(data) {
             $(data.features).each(function(key, data) {
                 mapillary.addData(data);
